@@ -8,8 +8,6 @@ beforeEach(function () {
     $this->aba = new PhpAba;
 
     $this->descriptiveData = [
-        'bsb' => '062-111', // bsb
-        'account_number' => '111111111', // account number
         'bank_name' => 'CBA', // bank name
         'user_name' => 'FOO BAR CORPORATION', // Account name, up to 26 characters
         // 'remitter' => 'FOO BAR', // Remitter
@@ -31,36 +29,57 @@ beforeEach(function () {
 
 describe('phpaba', function () {
     test('add descriptive record', function () {
+        $descriptiveData = [
+            'bank_name' => 'CBA', // bank name
+            'user_name' => 'FOO BAR CORPORATION', // Account name, up to 26 characters
+            'user_number' => '301500', // direct entry id for CBA
+            'description' => 'PAYROLL', // description
+            'process_date' => '290616', // DDMMYY
+        ];
+
         $expectedDescriptiveString = '0                 01CBA       FOO BAR CORPORATION       301500PAYROLL     290616                                        ';
 
-        $descriptiveString = $this->aba->addDescriptiveRecord($this->descriptiveData);
+        $descriptiveString = $this->aba->addDescriptiveRecord($descriptiveData);
 
         expect(substr($descriptiveString, 0, 120))->toEqual($expectedDescriptiveString);
     });
 
     test('add detail record', function () {
+        $detailData = [
+            'bsb' => '111-111',
+            'account_number' => '999999999',
+            'account_name' => 'Jhon doe',
+            'reference' => 'Payroll number',
+            'remitter' => 'FOO BAR',
+            'transaction_code' => '53',
+            'amount' => '250.87',
+        ];
+
         $expectedDetailString = '1111-111999999999 530000025087Jhon doe                        Payroll number    111-111999999999FOO BAR         00000000';
 
         $this->aba->addDescriptiveRecord($this->descriptiveData);
 
-        $detailString = $this->aba->addDetailRecord($this->detailData);
+        $detailString = $this->aba->addDetailRecord($detailData);
 
-        // Total detail record would be 120 characters
-        // remove line break
-        $detailString = substr($detailString, 0, 120);
-
-        expect($detailString)->toEqual($expectedDetailString);
+        expect(substr($detailString, 0, 120))->toEqual($expectedDetailString);
     });
 
     test('add detail record and formats bsb', function () {
-        $expectedDetailString = '1111-111999999999 530000025087Jhon doe                        Payroll number    111-111999999999FOO BAR         00000000';
+        $detailData = [
+            'bsb' => '111111',
+            'account_number' => '999999999',
+            'account_name' => 'Jhon doe',
+            'reference' => 'Payroll number',
+            'remitter' => 'FOO BAR',
+            'transaction_code' => '53',
+            'amount' => '250.87',
+        ];
 
-        $descriptiveData = $this->descriptiveData;
-        $descriptiveData['bsb'] = '111111';
+        $expectedDetailString = '1111-111999999999 530000025087Jhon doe                        Payroll number    111-111999999999FOO BAR         00000000';
 
         $this->aba->addDescriptiveRecord($this->descriptiveData);
 
-        $detailString = $this->aba->addDetailRecord($this->detailData);
+        $detailString = $this->aba->addDetailRecord($detailData);
 
         expect(substr($detailString, 0, 120))->toEqual($expectedDetailString);
     });
@@ -73,11 +92,7 @@ describe('phpaba', function () {
 
         $fileTotalString = $this->aba->addFileTotalRecord();
 
-        // Total detail record would be 120 characters
-        // remove line break
-        $fileTotalString = substr($fileTotalString, 0, 120);
-
-        expect($fileTotalString)->toEqual($expectedFileTotalString);
+        expect(substr($fileTotalString, 0, 120))->toEqual($expectedFileTotalString);
     });
 
     test('add blank spaces', function () {
@@ -85,9 +100,9 @@ describe('phpaba', function () {
     });
 
     test('pad string', function () {
-        $expected = 'Foo Bar   ';
+        $expected = 'Foo       ';
 
-        expect($this->aba->padString('Foo Bar', 10))->toEqual($expected);
+        expect($this->aba->padString('Foo', 10))->toEqual($expected);
     });
 
     test('dollars to cents', function () {

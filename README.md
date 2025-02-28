@@ -59,8 +59,6 @@ $aba = new PhpAba();
 $aba->addFileDetails([
     'bank_name' => 'ANZ', // bank name
     'user_name' => 'John Doe', // account name or company
-    'bsb' => '123-456', // bsb with hyphen
-    'account_number' => '123456789', // account number
     'user_number' => '301500', // user number (as allocated by APCA).
     'description' => 'Payroll', // description
     'process_date'  => '010125' // DDMMYY - date for it to be processed by the bank

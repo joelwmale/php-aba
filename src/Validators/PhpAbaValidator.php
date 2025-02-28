@@ -30,45 +30,27 @@ class PhpAbaValidator
      * @var array
      */
     protected static $descriptiveRecordRules = [
-        // mus tbe 6 digits with a dash or 6 digits and no space
-        'bsb' => ['required', 'regex:/^[\d]{3}-[\d]{3}$|^[\d]{6}$/'],
-        'account_number' => ['required', 'regex:/^[\d]{0,9}$/'],
         'bank_name' => ['required', 'regex:/^[A-Z]{3}$/'],
-        // Your organisation name
         'user_name' => 'required|regex:/^[A-Za-z\s+]{0,26}$/',
-        // Title of account to be credited/debited
-        // 'account_name' => ['sometimes', 'regex:/^[A-Za-z0-9^_[\]\',?;:=#\/.*()&%!$ @+-]{0,32}$/'],
-        // User Identification Number which is allocated by APCA
+
         'user_number' => ['required', 'regex:/^[\d]{0,6}$/'],
         'description' => ['required', 'regex:/^[A-Za-z\s]{0,12}$/'],
-        // 'indicator' => '/^N|T|W|X|Y| /',
-        // 'reference' => ['required', '/^[A-Za-z0-9^_[\]\',?;:=#\/.*()&%!$ @+-]{0,18}$/'],
-        // 'remitter' => ['sometimes', 'regex:/^[A-Za-z\s+]{0,16}$/'],
 
-        // format DDMMMYY
         'process_date' => ['required', 'regex:/^[\d]{6}$/'],
     ];
 
     protected static $detailRecordRules = [
-        // required and value must be in the transaction codes array
         'transaction_code' => ['required', 'regex:/^[\d]{2}$/'],
-        // mus tbe 6 digits with a dash or 6 digits and no space
+
         'bsb' => ['required', 'regex:/^[\d]{3}-[\d]{3}$|^[\d]{6}$/'],
         'account_number' => ['required', 'regex:/^[\d]{0,9}$/'],
-        // Your organisation name
-        // 'user_name' => 'required|regex:/^[A-Za-z\s+]{0,26}$/',
-        // Title of account to be credited/debited
+
         'account_name' => ['required', 'regex:/^[A-Za-z0-9^_[\]\',?;:=#\/.*()&%!$ @+-]{0,32}$/'],
-        // User Identification Number which is allocated by APCA
+
         'amount' => ['required'],
         'withholding_tax' => ['numeric', 'regex:/^[\d]{0,10}$/'],
-        // 'description' => ['required', 'regex:/^[A-Za-z\s]{0,12}$/'],
-        // 'indicator' => '/^N|T|W|X|Y| /',
-        // 'reference' => ['required', '/^[A-Za-z0-9^_[\]\',?;:=#\/.*()&%!$ @+-]{0,18}$/'],
-        'remitter' => ['required', 'regex:/^[A-Za-z\s+]{0,16}$/'],
 
-        // format DDMMMYY
-        // 'process_date' => ['required', 'regex:/^[\d]{6}$/'],
+        'remitter' => ['required', 'regex:/^[A-Za-z\s+]{0,16}$/'],
     ];
 
     /**
