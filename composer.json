@@ -1,0 +1,44 @@
+{
+    "name": "joelwmale/php-aba",
+    "version": "1.0.0",
+    "description": "Provides a simple way to generate an ABA file for batch transactions",
+    "keywords": [
+        "Aba",
+        "Australian Bankers Association",
+        "Batch transactions",
+        "Laravel aba"
+    ],
+    "homepage": "https://github.com/joelwmale/php-aba",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joel Male",
+            "email": "joel@joelmale.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "illuminate/support": "^10.0|^11.0|^12.0",
+        "illuminate/validation": "^10.0|^11.0|^12.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.21",
+        "pestphp/pest": "^3.0",
+        "larapack/dd": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Joelwmale\\PhpAba\\" : "src/" 
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
