@@ -6,110 +6,29 @@ use Joelwmale\PhpAba\Validators\PhpAbaValidator;
 
 class PhpAba
 {
-    /**
-     * Descriptive record type 0.
-     *
-     * @const string
-     */
     public const DESCRIPTIVE_RECORD = '0';
 
-    /**
-     * Detail record Type 1.
-     * There are three detail record types 1, 2 and 3.
-     * Only type 1 is used for batch tranactions
-     *
-     * @const string
-     */
     public const DETAIL_RECORD = '1';
 
-    /**
-     * File total record type 7
-     *
-     * @const string
-     */
     public const FILE_TOTAL_RECORD = '7';
 
-    /**
-     * The APCA standard string to generate ABA file
-     *
-     * @var string
-     */
-    protected $abaFileContent = '';
+    protected string $abaFileContent = '';
 
-    /**
-     * Total number of the transactions
-     *
-     * @var int
-     */
-    protected $totalTransactions = 0;
+    protected int $totalTransactions = 0;
 
-    /**
-     *  Credit total amount
-     *
-     * @var float
-     */
-    protected $totalCreditAmount = 0;
+    protected float $totalCreditAmount = 0;
 
-    /**
-     * Debit total amount
-     *
-     * @var float
-     */
-    protected $totalDebitAmount = 0;
+    protected float $totalDebitAmount = 0;
 
-    /**
-     * Descriptive record
-     *
-     * @var array
-     */
-    protected $descriptiveRecord;
+    protected string $descriptiveString = '';
 
-    /**
-     * Descriptive or file header string
-     *
-     * @var string
-     */
-    protected $descriptiveString = '';
+    protected string $detailString = '';
 
-    /**
-     * Detail string
-     *
-     * @var string
-     */
-    protected $detailString = '';
+    protected string $fileTotalString = '';
 
-    /**
-     * File total string
-     *
-     * @var string
-     */
-    protected $fileTotalString = '';
-
-    /**
-     * Alias of addDescriptiveRecord
-     *
-     * @return string
-     */
-    public function addFileDetails(array $record)
-    {
-        return $this->addDescriptiveRecord($record);
-    }
-
-    /**
-     * Generate descriptive record string
-     *
-     * @return string
-     */
-    public function addDescriptiveRecord(array $record)
+    public function addDescriptiveRecord(array $record): string
     {
         PhpAbaValidator::validateDescriptiveRecord($record);
-
-        // Verify processing date
-        // The date format must be DDMMYY
-        PhpAbaValidator::validateProcessDate($record['process_date']);
-
-        // Save the record to use it later
-        $this->descriptiveRecord = $record;
 
         // Lets build the descriptive record string
         // Position 1

@@ -36,7 +36,7 @@ class PhpAbaValidator
         'user_number' => ['required', 'regex:/^[\d]{0,6}$/'],
         'description' => ['required', 'regex:/^[A-Za-z\s]{0,12}$/'],
 
-        'process_date' => ['required', 'regex:/^[\d]{6}$/'],
+        'process_date' => ['required', 'regex:/^[\d]{6}$/', 'date_format:dmy'],
     ];
 
     protected static $detailRecordRules = [
@@ -79,6 +79,7 @@ class PhpAbaValidator
         'process_date.regex' => 'Process date must be in DDMMMYY format',
         'amount.required' => 'Amount is required',
         'amount.regex' => 'Amount must be a numeric number and up to 10 digits long',
+        'process_date.date_format' => 'Process date must be in DDMMMYY format',
     ];
 
     public static function validateDescriptiveRecord(array $record)
@@ -130,27 +131,6 @@ class PhpAbaValidator
     {
         if (! in_array($code, self::$transactionCodes)) {
             throw new Exception('Transaction code is invalid.');
-        }
-
-        return true;
-    }
-
-    /**
-     * Validate processing date. The date when transaction will be perform.
-     *
-     * @param  string  $date
-     * @return void
-     */
-    public static function validateProcessDate($date)
-    {
-        if (! is_string($date) && ! is_numeric($date)) {
-            throw new Exception("Process date is invalid. Process date must be in 'DDMMYY' format");
-        }
-
-        $parsed = date_parse_from_format('dmy', $date);
-
-        if (! ($parsed['error_count'] === 0 && $parsed['warning_count'] === 0)) {
-            throw new Exception("Process date is invalid. Process date must be in 'DDMMYY' format");
         }
 
         return true;

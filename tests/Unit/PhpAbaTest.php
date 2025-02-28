@@ -44,6 +44,20 @@ describe('phpaba', function () {
         expect(substr($descriptiveString, 0, 120))->toEqual($expectedDescriptiveString);
     });
 
+    test('validates process date is the correct format', function () {
+        $descriptiveData = [
+            'bank_name' => 'CBA', // bank name
+            'user_name' => 'FOO BAR CORPORATION', // Account name, up to 26 characters
+            'user_number' => '301500', // direct entry id for CBA
+            'description' => 'PAYROLL', // description
+            'process_date' => '202501', // DDMMYY
+        ];
+
+        expect(function () use ($descriptiveData) {
+            $this->aba->addDescriptiveRecord($descriptiveData);
+        })->toThrow(new \Exception('Process date must be in DDMMMYY format'));
+    });
+
     test('add detail record', function () {
         $detailData = [
             'bsb' => '111-111',
