@@ -6,11 +6,6 @@ use Exception;
 
 class PhpAbaValidator
 {
-    /**
-     * Transaction codes
-     *
-     * @var array
-     */
     public static $transactionCodes = [
         'externally_initiated_debit' => '13',
         'externally_initiated_credit' => '50',
@@ -24,40 +19,24 @@ class PhpAbaValidator
         'note_interest' => '57',
     ];
 
-    /**
-     * Validation rules
-     *
-     * @var array
-     */
     protected static $descriptiveRecordRules = [
         'bank_name' => ['required', 'regex:/^[A-Z]{3}$/'],
         'user_name' => 'required|regex:/^[A-Za-z\s+]{0,26}$/',
-
         'user_number' => ['required', 'regex:/^[\d]{0,6}$/'],
         'description' => ['required', 'regex:/^[A-Za-z\s]{0,12}$/'],
-
         'process_date' => ['required', 'regex:/^[\d]{6}$/', 'date_format:dmy'],
     ];
 
     protected static $detailRecordRules = [
         'transaction_code' => ['required', 'regex:/^[\d]{2}$/'],
-
         'bsb' => ['required', 'regex:/^[\d]{3}-[\d]{3}$|^[\d]{6}$/'],
         'account_number' => ['required', 'regex:/^[\d]{0,9}$/'],
-
         'account_name' => ['required', 'regex:/^[A-Za-z0-9^_[\]\',?;:=#\/.*()&%!$ @+-]{0,32}$/'],
-
         'amount' => ['required'],
         'withholding_tax' => ['numeric', 'regex:/^[\d]{0,10}$/'],
-
         'remitter' => ['required', 'regex:/^[A-Za-z\s+]{0,16}$/'],
     ];
 
-    /**
-     * Error messages
-     *
-     * @var array
-     */
     protected static $messages = [
         'bsb.required' => 'BSB is required',
         'bsb.regex' => 'BSB format is incorrect. The valid format is XXX-XXX or XXXXXX',
@@ -104,48 +83,10 @@ class PhpAbaValidator
         return true;
     }
 
-    /**
-     * Check any required fields is missing
-     *
-     * @param  string  $recordType
-     * @return void
-     */
-    public static function verifyRecord(array $record, array $matchRules, $recordType = 'Detail')
-    {
-        $missingFields = array_diff($matchRules, array_keys($record));
-
-        if ($missingFields) {
-            throw new Exception("Some required {$recordType} fields missing: ".implode(',', $missingFields));
-        }
-
-        return true;
-    }
-
-    /**
-     * Validate a transaction code
-     *
-     * @param  string  $code
-     * @return void
-     */
-    public static function validateTransactionCode($code)
+    public static function validateTransactionCode(string $code): bool
     {
         if (! in_array($code, self::$transactionCodes)) {
             throw new Exception('Transaction code is invalid.');
-        }
-
-        return true;
-    }
-
-    /**
-     * Check a number is numeric or not
-     *
-     * @param  float  $value
-     * @return void
-     */
-    public static function validateNumeric($value)
-    {
-        if (! is_numeric($value)) {
-            throw new Exception('Amount or Withholding tax amount must be a numeric number');
         }
 
         return true;

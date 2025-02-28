@@ -68,16 +68,15 @@ $aba->addFileDetails([
 $aba->addTransaction([
     'bsb' => '111-111',
     'account_number' => '999999999',
-    'account_name'  => 'Jhon doe',
-    'reference' => 'Payroll number',
-    'remitter' => 'John Doe', // Remitter
-    'transaction_code'  => '53',
+    'account_name'  => 'John Doe',
+    'reference' => 'Payroll',
+    'remitter' => 'ACME Company',
+    'transaction_code' => '53', // see below for transaction codes
     'amount' => '250.87' // must be in whole dollars
 ]);
 
-$abaFileContent = $aba->generate(); // generate the ABA file
-
-// now store it somewhere, or download it
+// generate the ABA file
+$abaFileContent = $aba->generate(); 
 ```
 
 ## 📚 Documentation
@@ -90,6 +89,7 @@ $transactions = [
         'account_number' => '999999999',
         'account_name' => 'John Doe',
         'reference' => 'Wages',
+        'remitter' => 'ACME Company',
         'transaction_code' => '53',
         'amount' => '250.87'
     ],
@@ -97,7 +97,8 @@ $transactions = [
         'bsb' => '222-2222',
         'account_number' => '888888888',
         'account_name'  => 'Jane Doe',
-        'reference' => 'Rent',
+        'reference' => 'Salary',
+        'remitter' => 'ACME Company',
         'transaction_code'  => '50',
         'amount' => '300.01'
     ]
@@ -148,7 +149,7 @@ $aba->generate();
         </tr>
         <tr>
             <td>Reference (Detail record)</td>
-            <td>The reference must be BECS characters only and up to 18 characters long. For example: Payroll number.</td>
+            <td>The reference must be BECS characters only and up to 18 characters long. For example: Wages.</td>
         </tr>
         <tr>
             <td>Remitter</td>

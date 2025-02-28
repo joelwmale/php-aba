@@ -10,7 +10,6 @@ beforeEach(function () {
     $this->descriptiveData = [
         'bank_name' => 'CBA', // bank name
         'user_name' => 'FOO BAR CORPORATION', // Account name, up to 26 characters
-        // 'remitter' => 'FOO BAR', // Remitter
         'user_number' => '301500', // direct entry id for CBA
         'description' => 'PAYROLL', // description
         'process_date' => '290616', // DDMMYY

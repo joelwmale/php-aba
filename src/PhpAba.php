@@ -30,7 +30,6 @@ class PhpAba
     {
         PhpAbaValidator::validateDescriptiveRecord($record);
 
-        // Lets build the descriptive record string
         // Position 1
         // Record Type
         $this->descriptiveString = self::DESCRIPTIVE_RECORD;
@@ -58,7 +57,7 @@ class PhpAba
         $this->descriptiveString .= $this->padString($record['user_number'], '6', '0', STR_PAD_RIGHT);
 
         // Position 63 - 74
-        // Description of entries
+        // Description
         $this->descriptiveString .= $this->padString($record['description'], '12');
 
         // Position 75 - 80
@@ -73,31 +72,13 @@ class PhpAba
         return $this->descriptiveString;
     }
 
-    public function addTransaction(array $transaction): string
-    {
-        return $this->addDetailRecord($transaction);
-    }
-
-    public function addTransactions(array $transactions): self
-    {
-        foreach ($transactions as $transaction) {
-            $this->addTransaction($transaction);
-        }
-
-        return $this;
-    }
-
     public function addDetailRecord(array $transaction)
     {
         $transaction['indicator'] = $transaction['indicator'] ?? ' ';
+        $transaction['withholding_tax'] = $transaction['withholding_tax'] ?? 0;
 
-        if (! isset($transaction['withholding_tax'])) {
-            $transaction['withholding_tax'] = 0;
-        }
-
+        // handle validating the structure and transaction code
         PhpAbaValidator::validateDetailRecord($transaction);
-
-        // validate the transaction code
         PhpAbaValidator::validateTransactionCode($transaction['transaction_code']);
 
         // Calculate debit or credit amount
@@ -160,6 +141,20 @@ class PhpAba
         $this->detailString .= $this->addLineBreak();
 
         return $this->detailString;
+    }
+
+    public function addTransaction(array $transaction): string
+    {
+        return $this->addDetailRecord($transaction);
+    }
+
+    public function addTransactions(array $transactions): self
+    {
+        foreach ($transactions as $transaction) {
+            $this->addTransaction($transaction);
+        }
+
+        return $this;
     }
 
     /**
@@ -233,7 +228,7 @@ class PhpAba
         return $this->abaFileContent;
     }
 
-    public function AddBlankSpaces($number)
+    public function addBlankSpaces($number)
     {
         return str_repeat(' ', $number);
     }
