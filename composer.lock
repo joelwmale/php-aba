@@ -474,16 +474,16 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v12.1.1",
+            "version": "v12.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "2f99ed909d7439d5298b85e2f51d3965aa77e5a9"
+                "reference": "57d786330a14a792bd9bb8183a799893d3f15caa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/2f99ed909d7439d5298b85e2f51d3965aa77e5a9",
-                "reference": "2f99ed909d7439d5298b85e2f51d3965aa77e5a9",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/57d786330a14a792bd9bb8183a799893d3f15caa",
+                "reference": "57d786330a14a792bd9bb8183a799893d3f15caa",
                 "shasum": ""
             },
             "require": {
@@ -521,7 +521,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-02-17T16:39:31+00:00"
+            "time": "2025-03-12T14:22:47+00:00"
         },
         {
             "name": "illuminate/contracts",
@@ -573,16 +573,16 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v12.1.1",
+            "version": "v12.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "fc9f11489e251a1a3e4c630dcae398dde6f1074b"
+                "reference": "e59cfec3c16d71be2da85cf9385ddd82f0c15857"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/fc9f11489e251a1a3e4c630dcae398dde6f1074b",
-                "reference": "fc9f11489e251a1a3e4c630dcae398dde6f1074b",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/e59cfec3c16d71be2da85cf9385ddd82f0c15857",
+                "reference": "e59cfec3c16d71be2da85cf9385ddd82f0c15857",
                 "shasum": ""
             },
             "require": {
@@ -636,7 +636,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-02-28T16:52:27+00:00"
+            "time": "2025-03-12T14:22:47+00:00"
         },
         {
             "name": "illuminate/macroable",
@@ -763,7 +763,7 @@
         },
         {
             "name": "illuminate/translation",
-            "version": "v12.1.1",
+            "version": "v12.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/translation.git",
@@ -814,16 +814,16 @@
         },
         {
             "name": "illuminate/validation",
-            "version": "v12.1.1",
+            "version": "v12.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/validation.git",
-                "reference": "568bef44f3c65f127f8fa2f04cd6689b53237c71"
+                "reference": "6f00bef7992b6d1cd6b9ba43306c3f7fd7d4fb88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/validation/zipball/568bef44f3c65f127f8fa2f04cd6689b53237c71",
-                "reference": "568bef44f3c65f127f8fa2f04cd6689b53237c71",
+                "url": "https://api.github.com/repos/illuminate/validation/zipball/6f00bef7992b6d1cd6b9ba43306c3f7fd7d4fb88",
+                "reference": "6f00bef7992b6d1cd6b9ba43306c3f7fd7d4fb88",
                 "shasum": ""
             },
             "require": {
@@ -872,7 +872,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-02-19T22:50:56+00:00"
+            "time": "2025-03-12T14:22:47+00:00"
         },
         {
             "name": "nesbot/carbon",
