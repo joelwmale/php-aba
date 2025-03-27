@@ -1,6 +1,6 @@
 {
     "name": "joelwmale/php-aba",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Provides a simple way to generate an ABA file for batch transactions",
     "keywords": [
         "Aba",
