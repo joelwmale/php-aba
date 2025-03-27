@@ -71,6 +71,8 @@ $aba->addTransaction([
     'account_name'  => 'John Doe',
     'reference' => 'Payroll',
     'remitter' => 'ACME Company',
+    'trace_bsb' => '222-222', // the originating bank bsb
+    'trace_account_number' => '888888888', // the originating bank account number
     'transaction_code' => '53', // see below for transaction codes
     'amount' => '250.87' // must be in whole dollars
 ]);
@@ -91,6 +93,8 @@ $transactions = [
         'reference' => 'Wages',
         'remitter' => 'ACME Company',
         'transaction_code' => '53',
+        'trace_bsb' => '222-222',
+        'trace_account_number' => '888888888',
         'amount' => '250.87'
     ],
     [
@@ -100,6 +104,8 @@ $transactions = [
         'reference' => 'Salary',
         'remitter' => 'ACME Company',
         'transaction_code'  => '50',
+        'trace_bsb' => '222-222',
+        'trace_account_number' => '888888888',
         'amount' => '300.01'
     ]
 ];
@@ -150,6 +156,14 @@ $aba->generate();
         <tr>
             <td>Reference (Detail record)</td>
             <td>The reference must be BECS characters only and up to 18 characters long. For example: Wages.</td>
+        </tr>
+        <tr>
+            <td>Trace BSB</td>
+            <td>The trace BSB must be in the format XXX-XXX.</td>
+        </tr>
+        <tr>
+            <td>Trace account number</td>
+            <td>The trace account number must be up to 9 digits.</td>
         </tr>
         <tr>
             <td>Remitter</td>
