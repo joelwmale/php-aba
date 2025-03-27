@@ -124,11 +124,11 @@ class PhpAba
         // Trace BSB
         // Bank (FI)/State/Branch and account number of User to enable retracing of the entry to its source if necessary
         // Position 81-87
-        $this->detailString .= $this->formatBsb($transaction['bsb']);
+        $this->detailString .= $this->formatBsb($transaction['trace_bsb']);
 
         // Trace Account Number
         // Position 88-96
-        $this->detailString .= $this->padString($transaction['account_number'], '9', ' ', STR_PAD_LEFT);
+        $this->detailString .= $this->padString($transaction['trace_account_number'], '9', ' ', STR_PAD_LEFT);
 
         // Remitter Name
         // Position 97-112

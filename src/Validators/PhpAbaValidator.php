@@ -33,6 +33,8 @@ class PhpAbaValidator
         'account_number' => ['required', 'regex:/^[\d]{0,9}$/'],
         'account_name' => ['required', 'regex:/^[A-Za-z0-9^_[\]\',?;:=#\/.*()&%!$ @+-]{0,32}$/'],
         'amount' => ['required'],
+        'trace_bsb' => ['regex:/^[\d]{3}-[\d]{3}$|^[\d]{6}$/'],
+        'trace_account_number' => ['regex:/^[\d]{0,9}$/'],
         'withholding_tax' => ['numeric', 'regex:/^[\d]{0,10}$/'],
         'remitter' => ['required', 'regex:/^[A-Za-z\s+]{0,16}$/'],
     ];
