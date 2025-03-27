@@ -207,7 +207,7 @@ class PhpAba
 
     protected function formatBsb($bsb)
     {
-        if (strpos($bsb, '-') === false) {
+        if (! empty($bsb) && strpos($bsb, '-') === false) {
             return substr($bsb, 0, 3).'-'.substr($bsb, 3, 3);
         }
 
@@ -235,6 +235,10 @@ class PhpAba
 
     public function padString($value, $length, $padString = ' ', $type = STR_PAD_RIGHT)
     {
+        if (! is_string($value)) {
+            $value = (string) $value;
+        }
+
         return str_pad(substr($value, 0, $length), $length, $padString, $type);
     }
 

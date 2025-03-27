@@ -22,6 +22,8 @@ beforeEach(function () {
         'reference' => 'Payroll number',
         'remitter' => 'FOO BAR',
         'transaction_code' => '53',
+        'trace_bsb' => '111-111',
+        'trace_account_number' => '999999999',
         'amount' => '250.87',
     ];
 });
@@ -65,6 +67,8 @@ describe('phpaba', function () {
             'reference' => 'Payroll number',
             'remitter' => 'FOO BAR',
             'transaction_code' => '53',
+            'trace_bsb' => '111-111',
+            'trace_account_number' => '999999999',
             'amount' => '250.87',
         ];
 
@@ -85,10 +89,12 @@ describe('phpaba', function () {
             'reference' => 'Payroll number',
             'remitter' => 'FOO BAR',
             'transaction_code' => '53',
+            'trace_bsb' => '123456',
+            'trace_account_number' => '998877665',
             'amount' => '250.87',
         ];
 
-        $expectedDetailString = '1111-111999999999 530000025087Jhon doe                        Payroll number    111-111999999999FOO BAR         00000000';
+        $expectedDetailString = '1111-111999999999 530000025087Jhon doe                        Payroll number    123-456998877665FOO BAR         00000000';
 
         $this->aba->addDescriptiveRecord($this->descriptiveData);
 
