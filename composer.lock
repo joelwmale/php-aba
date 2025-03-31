@@ -474,16 +474,16 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v12.3.0",
+            "version": "v12.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "57d786330a14a792bd9bb8183a799893d3f15caa"
+                "reference": "cdd99204b29acf795a02f778542df5a5244361fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/57d786330a14a792bd9bb8183a799893d3f15caa",
-                "reference": "57d786330a14a792bd9bb8183a799893d3f15caa",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/cdd99204b29acf795a02f778542df5a5244361fd",
+                "reference": "cdd99204b29acf795a02f778542df5a5244361fd",
                 "shasum": ""
             },
             "require": {
@@ -521,7 +521,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-03-12T14:22:47+00:00"
+            "time": "2025-03-22T17:41:27+00:00"
         },
         {
             "name": "illuminate/contracts",
@@ -573,16 +573,16 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v12.3.0",
+            "version": "v12.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "e59cfec3c16d71be2da85cf9385ddd82f0c15857"
+                "reference": "4fa2995bad173c1a0067b285bb7fef47a4b441c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/e59cfec3c16d71be2da85cf9385ddd82f0c15857",
-                "reference": "e59cfec3c16d71be2da85cf9385ddd82f0c15857",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/4fa2995bad173c1a0067b285bb7fef47a4b441c6",
+                "reference": "4fa2995bad173c1a0067b285bb7fef47a4b441c6",
                 "shasum": ""
             },
             "require": {
@@ -636,7 +636,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-03-12T14:22:47+00:00"
+            "time": "2025-03-19T20:10:05+00:00"
         },
         {
             "name": "illuminate/macroable",
@@ -763,16 +763,16 @@
         },
         {
             "name": "illuminate/translation",
-            "version": "v12.3.0",
+            "version": "v12.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/translation.git",
-                "reference": "91da1d7c6e187860a42f2beba28bbea52ae0e931"
+                "reference": "98400b14be9d91eb1b1b489eb953f7c816f8e25d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/translation/zipball/91da1d7c6e187860a42f2beba28bbea52ae0e931",
-                "reference": "91da1d7c6e187860a42f2beba28bbea52ae0e931",
+                "url": "https://api.github.com/repos/illuminate/translation/zipball/98400b14be9d91eb1b1b489eb953f7c816f8e25d",
+                "reference": "98400b14be9d91eb1b1b489eb953f7c816f8e25d",
                 "shasum": ""
             },
             "require": {
@@ -810,20 +810,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-02-18T15:38:29+00:00"
+            "time": "2025-03-19T20:10:05+00:00"
         },
         {
             "name": "illuminate/validation",
-            "version": "v12.3.0",
+            "version": "v12.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/validation.git",
-                "reference": "7c2a011ba53b31472b38f11fe92496559f430043"
+                "reference": "2c48eb26e36a88cd7b4fa0baad9499d14075faba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/validation/zipball/7c2a011ba53b31472b38f11fe92496559f430043",
-                "reference": "7c2a011ba53b31472b38f11fe92496559f430043",
+                "url": "https://api.github.com/repos/illuminate/validation/zipball/2c48eb26e36a88cd7b4fa0baad9499d14075faba",
+                "reference": "2c48eb26e36a88cd7b4fa0baad9499d14075faba",
                 "shasum": ""
             },
             "require": {
@@ -872,7 +872,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-03-17T20:32:44+00:00"
+            "time": "2025-03-22T23:03:39+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -1339,16 +1339,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v7.2.3",
+            "version": "v7.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "ee1b504b8926198be89d05e5b6fc4c3810c090f0"
+                "reference": "371272aeb6286f8135e028ca535f8e4d6f114126"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/ee1b504b8926198be89d05e5b6fc4c3810c090f0",
-                "reference": "ee1b504b8926198be89d05e5b6fc4c3810c090f0",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/371272aeb6286f8135e028ca535f8e4d6f114126",
+                "reference": "371272aeb6286f8135e028ca535f8e4d6f114126",
                 "shasum": ""
             },
             "require": {
@@ -1397,7 +1397,7 @@
             "description": "Defines an object-oriented layer for the HTTP specification",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-foundation/tree/v7.2.3"
+                "source": "https://github.com/symfony/http-foundation/tree/v7.2.5"
             },
             "funding": [
                 {
@@ -1413,7 +1413,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-01-17T10:56:55+00:00"
+            "time": "2025-03-25T15:54:33+00:00"
         },
         {
             "name": "symfony/mime",
