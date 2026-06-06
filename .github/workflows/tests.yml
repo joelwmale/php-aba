@@ -37,3 +37,6 @@ jobs:
 
       - name: Execute tests
         run: vendor/bin/pest
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse --memory-limit=256M
