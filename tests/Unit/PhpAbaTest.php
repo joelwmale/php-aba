@@ -142,4 +142,68 @@ describe('phpaba', function () {
     test('add line break', function () {
         expect($this->aba->addLineBreak())->toEqual("\r\n");
     });
+
+    test('addTransaction delegates to addDetailRecord', function () {
+        $this->aba->addDescriptiveRecord($this->descriptiveData);
+
+        $result = $this->aba->addTransaction($this->detailData);
+
+        expect($result[0])->toBe('1');
+    });
+
+    test('addTransactions adds multiple transactions', function () {
+        $this->aba->addDescriptiveRecord($this->descriptiveData);
+        $this->aba->addTransactions([$this->detailData, $this->detailData]);
+
+        expect($this->aba->getNetTotal())->toEqual(501.74);
+    });
+
+    test('generate produces a three-line ABA file', function () {
+        $this->aba->addDescriptiveRecord($this->descriptiveData);
+        $this->aba->addDetailRecord($this->detailData);
+
+        $output = $this->aba->generate();
+
+        $lines = array_filter(explode("\r\n", $output), fn ($line) => $line !== '');
+
+        expect(count($lines))->toBe(3);
+        expect($lines[0][0])->toBe('0');
+        expect($lines[1][0])->toBe('1');
+        expect($lines[2][0])->toBe('7');
+    });
+
+    test('credit transaction updates totalCreditAmount', function () {
+        $this->aba->addDescriptiveRecord($this->descriptiveData);
+        $this->aba->addDetailRecord($this->detailData);
+
+        expect($this->aba->getTotalCreditAmount())->toEqual(250.87);
+        expect($this->aba->getTotalDebitAmount())->toEqual(0.0);
+    });
+
+    test('debit transaction updates totalDebitAmount', function () {
+        $debitData = array_merge($this->detailData, ['transaction_code' => '13']);
+
+        $this->aba->addDescriptiveRecord($this->descriptiveData);
+        $this->aba->addDetailRecord($debitData);
+
+        expect($this->aba->getTotalDebitAmount())->toEqual(250.87);
+        expect($this->aba->getTotalCreditAmount())->toEqual(0.0);
+    });
+
+    test('throws on invalid transaction code', function () {
+        $invalidData = array_merge($this->detailData, ['transaction_code' => '99']);
+
+        $this->aba->addDescriptiveRecord($this->descriptiveData);
+
+        expect(fn () => $this->aba->addDetailRecord($invalidData))
+            ->toThrow(\Exception::class, 'Transaction code is invalid.');
+    });
+
+    test('padString truncates value exceeding length', function () {
+        expect($this->aba->padString('ABCDEFGHIJK', 5))->toBe('ABCDE');
+    });
+
+    test('padString pads left with custom pad string', function () {
+        expect($this->aba->padString('123', 6, '0', STR_PAD_LEFT))->toBe('000123');
+    });
 });
